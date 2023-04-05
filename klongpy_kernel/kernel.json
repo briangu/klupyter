@@ -1,0 +1,6 @@
+{
+    "argv": ["python", "-m", "klongpy_kernel", "-f", "{connection_file}"],
+    "display_name": "Klongpy",
+    "language": "Klong"
+}
+

@@ -2,22 +2,24 @@ import sys
 from io import StringIO
 from ipykernel.kernelbase import Kernel
 
-class KlongpyKernel(Kernel):
-    implementation = 'ArithmeticKernel'
+class KlongPyKernel(Kernel):
+    implementation = 'KlongPyKernel'
     implementation_version = '0.1'
-    language = 'arithmetic'
+    language = 'Klong'
     language_version = '0.1'
-    language_info = {'name': 'arithmetic', 'mimetype': 'text/plain', 'file_extension': '.arith'}
-    banner = "Arithmetic Kernel - A simple kernel that evaluates arithmetic expressions"
+    language_info = {'name': 'Klong', 'mimetype': 'text/plain', 'file_extension': '.kg'}
+    banner = "KlongPy - Vectorized port of Klong array language" 
 
     def eval_expr(self, expr):
         try:
+            print(expr)
             result = eval(expr)
             return str(result)
         except Exception as e:
             return str(e)
 
-    def do_execute(self, code, silent):
+    def do_execute(self, code, silent, store_history=True, user_expressions=None, allow_stdin=False):
+        print(code)
         output = self.eval_expr(code.strip())
 
         if not silent:
