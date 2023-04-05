@@ -19,3 +19,8 @@ or
 ```bash
 jupyter notebook
 ```
+
+# Example
+
+![Select KlongPy language and have fun!](docs/imgs/nb.png?raw=true)
+
