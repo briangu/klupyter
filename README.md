@@ -1,6 +1,6 @@
 # KlongPy Jupyter Kernel
 
-Use (KlongPy)[http://klongpy.org) in Jupyter Notebooks! 
+Use [KlongPy](http://klongpy.org) in Jupyter Notebooks! 
 
 # Install
 
