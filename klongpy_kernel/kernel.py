@@ -2,7 +2,7 @@ import sys
 from io import StringIO
 from ipykernel.kernelbase import Kernel
 
-class ArithKernel(Kernel):
+class KlongpyKernel(Kernel):
     implementation = 'ArithmeticKernel'
     implementation_version = '0.1'
     language = 'arithmetic'
@@ -26,7 +26,4 @@ class ArithKernel(Kernel):
 
         return {'status': 'ok', 'execution_count': self.execution_count, 'payload': [], 'user_expressions': {}}
 
-if __name__ == '__main__':
-    from ipykernel.kernelapp import IPKernelApp
-    IPKernelApp.launch_instance(kernel_class=ArithKernel)
 
