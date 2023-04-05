@@ -7,7 +7,7 @@ setup(name='klongpy_kernel',
       author_email='brian@ops5.com',
       license='MIT',
       packages=['klongpy_kernel'],
-      install_requires=['ipykernel'],
+      install_requires=['ipykernel','klongpy'],
       classifiers=[
           'Development Status :: 3 - Alpha',
           'Framework :: IPython',
