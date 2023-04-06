@@ -1,0 +1,31 @@
+FROM cschranz/gpu-jupyter:v1.5_cuda-11.6_ubuntu-20.04_python-only
+
+USER root
+
+# Install any system-level dependencies required for your kernel here
+# For example, RUN apt-get update && apt-get install -y some-package
+RUN pip3 install --no-cache-dir cupy-cuda11x
+
+# Install your custom kernel
+COPY . /opt/klupyter
+
+# Set the appropriate permissions for .local and .ipython directories
+RUN mkdir -p /home/${NB_USER}/.local && \
+    mkdir -p /home/${NB_USER}/.ipython && \
+    chown -R ${NB_UID}:users /home/${NB_USER}/.local && \
+    chmod -R 755 /home/${NB_USER}/.local && \
+    chown -R ${NB_UID}:users /home/${NB_USER}/.ipython && \
+    chmod -R 755 /home/${NB_USER}/.ipython && \
+    chown -R ${NB_UID}:users /opt/klupyter
+
+# Switch back to the non-root user
+USER ${NB_UID}
+
+# Tell KlongPy to use the GPU
+ENV USE_GPU=1 
+ENV LD_LIBRARY_PATH=/usr/local/cuda-11.6/compat:${LD_LIBRARY_PATH}
+
+# Install your custom kernel
+RUN cd /opt/klupyter && \
+    pip3 install -e . && \
+    jupyter kernelspec install --user klongpy_kernel
